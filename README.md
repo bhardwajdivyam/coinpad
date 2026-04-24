@@ -37,10 +37,26 @@ Track real-time crypto prices, explore transactions, and manage your favorite co
 
 ## 📁 Project Structure
 
-src/  ├── components/  │     ├── CoinCard.jsx  │     ├── Navbar.jsx  │     ├── SearchBar.jsx  │     └── ...  ├── pages/  │     ├── Home.jsx  │     ├── CoinDetails.jsx  │     ├── Tracker.jsx  │     ├── TxTracker.jsx  │     └── ...  ├── context/  │     └── WatchlistContext.jsx  ├── services/  │     ├── api.js  │     └── apiConfig.js  ├── App.jsx  └── main.jsx
-
----
-
+src/
+ ├── components/
+ │     ├── CoinCard.jsx
+ │     ├── Navbar.jsx
+ │     ├── SearchBar.jsx
+ │     └── ...
+ ├── pages/
+ │     ├── Home.jsx
+ │     ├── CoinDetails.jsx
+ │     ├── Tracker.jsx
+ │     ├── TxTracker.jsx
+ │     └── ...
+ ├── context/
+ │     └── WatchlistContext.jsx
+ ├── services/
+ │     ├── api.js
+ │     └── apiConfig.js
+ ├── App.jsx
+ └── main.jsx
+ 
 ## ⚙️ Getting Started
 
 ### 1. Clone the repository
