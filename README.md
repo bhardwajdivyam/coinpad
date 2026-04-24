@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="./banner.png" alt="Coinpad Banner" />
+</p>
+
 # 🚀 Coinpad
 
 A modern cryptocurrency dashboard and transaction explorer built with React (Vite).  
