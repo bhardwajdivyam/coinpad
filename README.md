@@ -41,7 +41,7 @@ Track real-time crypto prices, explore transactions, and manage your favorite co
 
 ## 📁 Project Structure
 
-```src/
+src/
  ├── components/
  │     ├── CoinCard.jsx
  │     ├── Navbar.jsx
@@ -59,7 +59,7 @@ Track real-time crypto prices, explore transactions, and manage your favorite co
  │     ├── api.js
  │     └── apiConfig.js
  ├── App.jsx
- └── main.jsx ```
+ └── main.jsx 
  
 ## ⚙️ Getting Started
 
