@@ -1,0 +1,313 @@
+@import "tailwindcss";
+
+/* ── Design Tokens ─────────────────────────────────────── */
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --color-surface: #0a0a0f;
+  --color-surface-raised: rgba(255, 255, 255, 0.04);
+  --color-surface-hover: rgba(255, 255, 255, 0.07);
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-text-primary: #f5f5f7;
+  --color-text-secondary: #8e8e93;
+  --color-accent: #38bdf8;
+  --color-accent-glow: rgba(56, 189, 248, 0.15);
+  --color-gain: #34d399;
+  --color-loss: #f87171;
+
+  --color-light-surface: #f5f5f7;
+  --color-light-surface-raised: rgba(0, 0, 0, 0.03);
+  --color-light-surface-hover: rgba(0, 0, 0, 0.06);
+  --color-light-border: rgba(0, 0, 0, 0.08);
+  --color-light-text-primary: #1d1d1f;
+  --color-light-text-secondary: #6e6e73;
+}
+
+/* ── Base ──────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background: var(--color-surface);
+  color: var(--color-text-primary);
+  transition: background 0.35s ease, color 0.35s ease;
+}
+
+/* Light mode overrides */
+body.light {
+  background: var(--color-light-surface);
+  color: var(--color-light-text-primary);
+}
+
+/* ── Glass Card ────────────────────────────────────────── */
+.glass {
+  background: var(--color-surface-raised);
+  border: 1px solid var(--color-border);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-radius: 16px;
+  transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.glass:hover {
+  background: var(--color-surface-hover);
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+body.light .glass {
+  background: var(--color-light-surface-raised);
+  border-color: var(--color-light-border);
+}
+
+body.light .glass:hover {
+  background: var(--color-light-surface-hover);
+  border-color: rgba(0, 0, 0, 0.12);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+}
+
+/* ── Text helpers ──────────────────────────────────────── */
+.text-secondary {
+  color: var(--color-text-secondary);
+}
+
+body.light .text-secondary {
+  color: var(--color-light-text-secondary);
+}
+
+/* ── Skeleton Pulse ────────────────────────────────────── */
+@keyframes shimmer {
+  0% { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, rgba(255,255,255,0.04) 25%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.04) 75%);
+  background-size: 800px 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+  border-radius: 8px;
+}
+
+body.light .skeleton {
+  background: linear-gradient(90deg, rgba(0,0,0,0.04) 25%, rgba(0,0,0,0.08) 50%, rgba(0,0,0,0.04) 75%);
+  background-size: 800px 100%;
+}
+
+/* ── Scrollbar ─────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+body.light ::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+/* ── Coin Card (clickable) ────────────────────────────── */
+.coin-card {
+  transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease;
+}
+
+.coin-card:hover {
+  transform: translateY(-2px);
+}
+
+.coin-card:active {
+  transform: scale(0.98);
+}
+
+/* ── Coin Details Page ────────────────────────────────── */
+.coin-details {
+  max-width: 56rem;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .coin-details {
+    padding: 2rem 1.5rem;
+  }
+}
+
+.coin-details__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  background: none;
+  border: none;
+  padding: 0.375rem 0;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  align-self: flex-start;
+}
+
+.coin-details__back:hover {
+  color: var(--color-accent);
+}
+
+.coin-details__header {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.coin-details__price-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .coin-details__price-row {
+    flex-direction: row;
+    align-items: baseline;
+    gap: 1rem;
+  }
+}
+
+/* ── Chart Card ───────────────────────────────────────── */
+.coin-details__chart-card {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.coin-details__chart-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+/* ── Day Selector ─────────────────────────────────────── */
+.day-selector {
+  display: flex;
+  gap: 0.25rem;
+  background: var(--color-surface-raised);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  padding: 0.25rem;
+}
+
+body.light .day-selector {
+  background: var(--color-light-surface-raised);
+  border-color: var(--color-light-border);
+}
+
+.day-selector__btn {
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0.375rem 0.75rem;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+body.light .day-selector__btn {
+  color: var(--color-light-text-secondary);
+}
+
+.day-selector__btn:hover {
+  color: var(--color-text-primary);
+  background: var(--color-surface-hover);
+}
+
+body.light .day-selector__btn:hover {
+  color: var(--color-light-text-primary);
+  background: var(--color-light-surface-hover);
+}
+
+.day-selector__btn--active {
+  color: var(--color-accent) !important;
+  background: var(--color-accent-glow) !important;
+}
+
+/* ── Chart Tooltip ────────────────────────────────────── */
+.chart-tooltip {
+  background: rgba(10, 10, 15, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 0.625rem 0.875rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+body.light .chart-tooltip {
+  background: rgba(255, 255, 255, 0.92);
+  border-color: rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.chart-tooltip__date {
+  font-size: 0.6875rem;
+  color: var(--color-text-secondary);
+  margin: 0 0 0.125rem;
+}
+
+body.light .chart-tooltip__date {
+  color: var(--color-light-text-secondary);
+}
+
+.chart-tooltip__price {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+body.light .chart-tooltip__price {
+  color: var(--color-light-text-primary);
+}
+
+/* ── Stats Grid ───────────────────────────────────────── */
+.coin-details__stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .coin-details__stats {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ── Recharts overrides (prevent default text colors) ── */
+.recharts-text {
+  fill: var(--color-text-secondary) !important;
+}
+
+body.light .recharts-text {
+  fill: var(--color-light-text-secondary) !important;
+}
